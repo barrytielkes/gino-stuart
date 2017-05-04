@@ -1,0 +1,31 @@
+
+node_modules
+coverage
+
+# IntelliJ IDE ignore
+.idea
+
+# Visual Studio Code
+.vscode
+
+# Debug log from npm
+npm-debug.log
+
+# Error log from yarn
+yarn-error.log
+.log
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
+
+# flow-typed Lib Defs
+flow-typed/
+
+# Flow Coverage Report
+flow-coverage/
+
+# Ignore all build files/folders
+lib/
+build/
+
+.orig
