@@ -1,12 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
+import { css } from 'glamor';
+
+const styles = css({ textAlign: 'center', backgroundColor: 'red' });
 
 class Home extends React.Component {
 	render() {
-		console.log("Home", this.props.state);
+		console.log('Home', this.props.state);
 		//setTimeout(this.props.dispatchSomething, 10000);
 		return (
-			<div style={{ textAlign: "center" }}>
+			<div {...styles}>
 				<h1>Home, ja ja dit is home.....</h1>
 			</div>
 		);
@@ -22,9 +25,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		dispatchSomething: () => {
 			dispatch({
-				type: "SUPER_DISPATCH",
+				type: 'SUPER_DISPATCH',
 				payload: {
-					bla: "blabla"
+					bla: 'blabla'
 				}
 			});
 		}

@@ -1,17 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // import { combineReducers } from "redux";
-import { createStore } from "redux";
+import { createStore } from 'redux';
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import reducer from "./reducer";
+import reducer from './reducer';
 // import App from "./app";
-import Home from "./home";
-import Photos from "./photos";
-import Contact from "./contact";
+import Home from './home';
+import Photos from './photos';
+import Contact from './contact';
 
 const store = createStore(reducer);
 
@@ -27,7 +27,7 @@ ReactDOM.render(
 			</Switch>
 		</Router>
 	</Provider>,
-	document.getElementById("root")
+	document.getElementById('root')
 );
 
 const NoMatch = ({ location }) => (
@@ -36,13 +36,12 @@ const NoMatch = ({ location }) => (
 
 setTimeout(() => {
 	store.dispatch({
-		type: "ADD_USER",
-		user: { name: "Dan" }
+		type: 'ADD_USER',
+		user: { name: 'Dan' }
 	});
 }, 5000);
 
-// reducer erin
-// router erin
 // glamor
 // firebase
 //flow erin
+// build process
