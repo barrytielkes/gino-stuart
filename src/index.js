@@ -9,10 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import reducer from './reducer';
-// import App from "./app";
-import Home from './home';
-import Photos from './photos';
-import Contact from './contact';
+import App from './components/app';
 
 const rootReducer = combineReducers({
 	firebase: firebaseStateReducer,
@@ -32,7 +29,7 @@ const createStoreWithFirebase = compose(
 	reactReduxFirebase(config, {}) //, { userProfile: 'users' })
 )(createStore);
 
-const initialState = { main: { test: 'van barry2' } };
+const initialState = { main: { currentPage: 'home' } };
 
 // Create store with reducers and initial state
 const store = createStoreWithFirebase(rootReducer, initialState);
@@ -42,19 +39,16 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Router>
 			<Switch>
-				<Route exact path="/" component={Home} />
-				<Route path="/photos/" component={Photos} />
-				<Route path="/contact/" component={Contact} />
-				<Route component={NoMatch} />
+				<Route path="*" component={App} />
 			</Switch>
 		</Router>
 	</Provider>,
 	document.getElementById('root')
 );
 
-const NoMatch = ({ location }) => (
-	<div>404, page not found, Maggie maybe ate it.</div>
-);
+// const NoMatch = ({ location }) => (
+// <div>404, page not found, Maggie maybe ate it.</div>
+// );
 
 //setTimeout(() => {
 //	store.dispatch({
@@ -63,6 +57,6 @@ const NoMatch = ({ location }) => (
 //	});
 //}, 5000);
 
-// firebase
+// code structuur erin.
 //flow erin
 // build process
