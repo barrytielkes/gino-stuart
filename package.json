@@ -7,6 +7,7 @@
     "start": "webpack-dev-server"
   },
   "dependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "glamor": "^2.20.25",
     "html-webpack-plugin": "^2.28.0",
     "path": "^0.12.7",

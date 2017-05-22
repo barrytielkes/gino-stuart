@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import Home from './home';
@@ -17,7 +17,11 @@ import {
 @connect(({ firebase }) => ({
 	db: dataToJS(firebase, '/')
 }))
-class App extends React.Component {
+class App extends Component {
+	test = () => {
+		console.log('test');
+	};
+
 	render() {
 		const { _db } = this.props;
 		console.log('this.props <<', this.props);
