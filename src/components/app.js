@@ -1,45 +1,58 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
+import { css } from 'glamor';
 import Home from './home';
-import Photos from './photos';
+import Bio from './bio';
+import Shows from './shows';
 import Contact from './contact';
 import Navigation from './navigation';
+import Images from './images';
 
 import {
 	firebaseConnect,
 	isLoaded,
 	isEmpty,
-	dataToJS
+	dataToJS,
 } from 'react-redux-firebase';
 
-@firebaseConnect(['/'])
+const logoStyle = css({
+	marginTop: '20px',
+	marginBottom: '10px',
+	maxWidth: '300px',
+});
+
+@firebaseConnect(['pages'])
 @connect(({ firebase }) => ({
-	db: dataToJS(firebase, '/')
+	pages: dataToJS(firebase, 'pages'),
 }))
-class App extends Component {
+export default class App extends Component {
 	test = () => {
 		console.log('test');
 	};
 
 	render() {
-		const { _db } = this.props;
-		console.log('this.props <<', this.props);
+		const { pages } = this.props;
+		//console.log('>>>>>>>>>>>>>>>> pages', pages);
 		return (
 			<div style={{ textAlign: 'center' }}>
-				<h1>Hello World</h1>
-				<Navigation pages={_db ? _db.pages : null} />
+				<Link to="/">
+					<img {...logoStyle} src={'/logo.png'} />
+				</Link>
+				<Navigation pages={pages} />
 				<Route exact path="/" component={Home} />
-				<Route path="/photos/" component={Photos} />
+				<Route path="/shows/" component={Shows} />
+				<Route path="/bio/" component={Bio} />
 				<Route path="/contact/" component={Contact} />
+				<Images />
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = ({ main }) => {
-	console.log('mapStateToProps >', Object.assign({}, main.db));
-	return { _db: Object.assign({}, main.db) };
-};
+// const mapStateToProps = ({ main }) => {
+// console.log('--mapStateToProps >', main, Object.assign({}, main.pages));
+// return { pages: Object.assign({}, main.pages) };
+// };
 
-export default connect(mapStateToProps)(App);
+// export default connect(mapStateToProps)(App);

@@ -6,13 +6,12 @@ import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 @connect(({ firebase }) => {
 	const d = dataToJS(firebase, 'pages');
 	return {
-		data: d ? d.contact : null,
+		data: d ? d.bio : null,
 	};
 })
-export default class Contact extends Component {
+export default class Bio extends Component {
 	render() {
 		const { data } = this.props;
-		console.log('%%%%%%%%pages', data);
 		return (
 			<div style={{ textAlign: 'center' }}>
 				{data &&

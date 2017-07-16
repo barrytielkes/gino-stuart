@@ -2,12 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
 
-const styles = css({ textAlign: 'center', backgroundColor: 'red' });
+const styles = css({ textAlign: 'center' });
 
 class Home extends React.Component {
 	render() {
-		// console.log('Home', this.props.state);
-		//setTimeout(this.props.dispatchSomething, 10000);
 		return (
 			<div {...styles}>
 				<h1>Home, ja ja dit is home.....</h1>

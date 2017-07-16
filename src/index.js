@@ -13,7 +13,7 @@ import App from './components/app';
 
 const rootReducer = combineReducers({
 	firebase: firebaseStateReducer,
-	main: reducer
+	main: reducer,
 });
 // const store = createStore(rootReducer);
 
@@ -23,18 +23,17 @@ const config = {
 	databaseURL: 'https://gino-stuart.firebaseio.com',
 	projectId: 'gino-stuart',
 	storageBucket: 'gino-stuart.appspot.com',
-	messagingSenderId: '978832448706'
+	messagingSenderId: '978832448706',
 };
 const createStoreWithFirebase = compose(
-	reactReduxFirebase(config, {}) //, { userProfile: 'users' })
+	reactReduxFirebase(config, {}), //, { userProfile: 'users' })
 )(createStore);
 
-const initialState = { main: { currentPage: 'home' } };
+const initialState = { main: {}, firebase: {} };
 
 // Create store with reducers and initial state
 const store = createStoreWithFirebase(rootReducer, initialState);
 
-// ReactDOM.render(<App />, document.getElementById("root"));
 ReactDOM.render(
 	<Provider store={store}>
 		<Router>
@@ -43,20 +42,5 @@ ReactDOM.render(
 			</Switch>
 		</Router>
 	</Provider>,
-	document.getElementById('root')
+	document.getElementById('root'),
 );
-
-// const NoMatch = ({ location }) => (
-// <div>404, page not found, Maggie maybe ate it.</div>
-// );
-
-//setTimeout(() => {
-//	store.dispatch({
-//		type: 'ADD_USER',
-//		user: { name: 'Dan' }
-//	});
-//}, 5000);
-
-// code structuur erin.
-//flow erin
-// build process
