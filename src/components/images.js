@@ -3,6 +3,7 @@ import type { Children } from 'react';
 import { css } from 'glamor';
 import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
+import { getCurrentData } from './utils';
 
 const wrapperStyle = css({
 	label: 'imagesWrapper',
@@ -17,24 +18,35 @@ type Props = {
 	children?: Children,
 };
 
-@firebaseConnect(['main'])
+@firebaseConnect(['pages'])
 @connect(({ firebase }) => {
-	const d = dataToJS(firebase, 'main');
-	console.log('images', d, firebase);
-	return {};
+	const pages = dataToJS(firebase, 'pages');
 	return {
-		data: d ? d.bio : null,
+		pages: pages,
 	};
 })
 export default class Images extends Component {
 	props: Props;
 	render() {
+		const { pages } = this.props;
+		const data = getCurrentData(pages);
+		if (data) {
+			console.log('data.images', Object.keys(data.images));
+		}
 		// const {data} = this.props;
-		return <div />;
-		/*return (
+		//return <div />;
+		return (
 			<div {...wrapperStyle}>
-				{data.forEach(image => <div {...imageStyle}><img src={image}></div>)}
+				{data &&
+					Object.keys(data.images).forEach(key => {
+						console.log('key', key, data.images[key]);
+						return (
+							<div {...imageStyle}>
+								<img src={data.images[key]} />
+							</div>
+						);
+					})}
 			</div>
-		);*/
+		);
 	}
 }

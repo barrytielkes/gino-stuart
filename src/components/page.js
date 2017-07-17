@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
+import { getCurrentData } from './utils';
 
 @firebaseConnect(['pages'])
 @connect(({ firebase }) => {
-	const d = dataToJS(firebase, 'pages');
+	const pages = dataToJS(firebase, 'pages');
 	return {
-		data: d ? d.bio : null,
+		pages: pages,
 	};
 })
-export default class Bio extends Component {
+export default class Page extends Component {
 	render() {
-		const { data } = this.props;
+		const { pages } = this.props;
+		const data = getCurrentData(pages);
 		return (
 			<div style={{ textAlign: 'center' }}>
 				{data &&

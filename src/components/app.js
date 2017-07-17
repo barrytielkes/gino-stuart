@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import { css } from 'glamor';
-import Home from './home';
-import Bio from './bio';
-import Shows from './shows';
-import Contact from './contact';
+import Page from './page';
+// import Home from './home';
+// import Bio from './bio';
+// import Shows from './shows';
+// import Contact from './contact';
 import Navigation from './navigation';
 import Images from './images';
 
@@ -40,15 +41,16 @@ export default class App extends Component {
 					<img {...logoStyle} src={'/logo.png'} />
 				</Link>
 				<Navigation pages={pages} />
-				<Route exact path="/" component={Home} />
-				<Route path="/shows/" component={Shows} />
-				<Route path="/bio/" component={Bio} />
-				<Route path="/contact/" component={Contact} />
+				<Route path="/" component={Page} />
 				<Images />
 			</div>
 		);
 	}
 }
+// <Route exact path="/" component={Home} />
+// <Route path="/shows/" component={Shows} />
+// <Route path="/bio/" component={Bio} />
+// <Route path="/contact/" component={Contact} />
 
 // const mapStateToProps = ({ main }) => {
 // console.log('--mapStateToProps >', main, Object.assign({}, main.pages));

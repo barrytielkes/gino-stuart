@@ -5,11 +5,12 @@ import { combineReducers, compose } from 'redux';
 import { reactReduxFirebase, firebaseStateReducer } from 'react-redux-firebase';
 import { createStore } from 'redux';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import reducer from './reducer';
 import App from './components/app';
+import history from './components/history';
 
 const rootReducer = combineReducers({
 	firebase: firebaseStateReducer,
@@ -36,7 +37,7 @@ const store = createStoreWithFirebase(rootReducer, initialState);
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Router>
+		<Router history={history}>
 			<Switch>
 				<Route path="*" component={App} />
 			</Switch>

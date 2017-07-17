@@ -20,7 +20,7 @@ export default class Navigation extends React.Component {
 			<div {...styles}>
 				{pages &&
 					Object.keys(pages).map(key =>
-						<Link key={key} {...itemStyle} to={pages[key].path}>
+						<Link key={key} {...itemStyle} to={key}>
 							{pages[key].button}
 						</Link>,
 					)}
