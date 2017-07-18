@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 import { getCurrentData } from './utils';
+import Images from './images';
 
 @firebaseConnect(['pages'])
 @connect(({ firebase }) => {
@@ -25,6 +26,7 @@ export default class Page extends Component {
 							{data.content.body}
 						</p>
 					</div>}
+				<Images data={data} />
 			</div>
 		);
 	}

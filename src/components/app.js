@@ -8,7 +8,6 @@ import Page from './page';
 // import Shows from './shows';
 // import Contact from './contact';
 import Navigation from './navigation';
-import Images from './images';
 
 import {
 	firebaseConnect,
@@ -42,7 +41,6 @@ export default class App extends Component {
 				</Link>
 				<Navigation pages={pages} />
 				<Route path="/" component={Page} />
-				<Images />
 			</div>
 		);
 	}

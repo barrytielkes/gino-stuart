@@ -14,34 +14,27 @@ const imageStyle = css({
 });
 
 type Props = {
-	data: Array<String>,
-	children?: Children,
+	data: Object,
+	// children?: Children,
 };
 
-@firebaseConnect(['pages'])
-@connect(({ firebase }) => {
-	const pages = dataToJS(firebase, 'pages');
-	return {
-		pages: pages,
-	};
-})
 export default class Images extends Component {
 	props: Props;
 	render() {
-		const { pages } = this.props;
-		const data = getCurrentData(pages);
-		if (data) {
-			console.log('data.images', Object.keys(data.images));
-		}
+		const { data } = this.props;
+		// const data = getCurrentData(pages);
+		// console.log('!!!!!data.images');
+		// if (data) {
+		// }
 		// const {data} = this.props;
 		//return <div />;
 		return (
 			<div {...wrapperStyle}>
 				{data &&
-					Object.keys(data.images).forEach(key => {
+					Object.keys(data.images).map(key => {
 						console.log('key', key, data.images[key]);
 						return (
-							<div {...imageStyle}>
+							<div {...imageStyle} key={key}>
 								<img src={data.images[key]} />
 							</div>
 						);
