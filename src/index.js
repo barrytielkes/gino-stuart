@@ -9,8 +9,8 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import reducer from './reducer';
-import App from './components/app';
-import history from './components/history';
+import App from './App';
+import history from './history';
 
 const rootReducer = combineReducers({
 	firebase: firebaseStateReducer,
@@ -27,7 +27,7 @@ const config = {
 	messagingSenderId: '978832448706',
 };
 const createStoreWithFirebase = compose(
-	reactReduxFirebase(config, {}), //, { userProfile: 'users' })
+	reactReduxFirebase(config, {}) //, { userProfile: 'users' })
 )(createStore);
 
 const initialState = { main: {}, firebase: {} };
@@ -43,5 +43,5 @@ ReactDOM.render(
 			</Switch>
 		</Router>
 	</Provider>,
-	document.getElementById('root'),
+	document.getElementById('root')
 );

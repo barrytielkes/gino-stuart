@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import { css } from 'glamor';
@@ -9,12 +10,7 @@ import Page from './page';
 // import Contact from './contact';
 import Navigation from './navigation';
 
-import {
-	firebaseConnect,
-	isLoaded,
-	isEmpty,
-	dataToJS,
-} from 'react-redux-firebase';
+import { firebaseConnect, isLoaded, isEmpty, dataToJS } from 'react-redux-firebase';
 
 const logoStyle = css({
 	marginTop: '20px',
@@ -22,11 +18,7 @@ const logoStyle = css({
 	maxWidth: '300px',
 });
 
-@firebaseConnect(['pages'])
-@connect(({ firebase }) => ({
-	pages: dataToJS(firebase, 'pages'),
-}))
-export default class App extends Component {
+class App extends Component {
 	test = () => {
 		console.log('test');
 	};
@@ -45,6 +37,17 @@ export default class App extends Component {
 		);
 	}
 }
+
+export default compose(
+	firebaseConnect([
+		'pages', // { path: 'todos' } // object notation
+	]),
+	connect(({ firebase }) => ({
+		// state.firebase
+		pages: dataToJS(firebase, 'pages'),
+	}))
+)(App);
+
 // <Route exact path="/" component={Home} />
 // <Route path="/shows/" component={Shows} />
 // <Route path="/bio/" component={Bio} />

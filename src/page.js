@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 import { getCurrentData } from './utils';
 import Images from './images';
 
-@firebaseConnect(['pages'])
-@connect(({ firebase }) => {
-	const pages = dataToJS(firebase, 'pages');
-	return {
-		pages: pages,
-	};
-})
-export default class Page extends Component {
+class Page extends Component {
 	render() {
 		const { pages } = this.props;
 		const data = getCurrentData(pages);
@@ -31,3 +25,13 @@ export default class Page extends Component {
 		);
 	}
 }
+
+export default compose(
+	firebaseConnect([
+		'pages', // { path: 'todos' } // object notation
+	]),
+	connect(({ firebase }) => ({
+		// state.firebase
+		pages: dataToJS(firebase, 'pages'),
+	}))
+)(Page);
