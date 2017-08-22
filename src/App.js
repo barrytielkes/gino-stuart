@@ -10,7 +10,7 @@ import Page from './page';
 // import Contact from './contact';
 import Navigation from './navigation';
 
-import { firebaseConnect, isLoaded, isEmpty, dataToJS } from 'react-redux-firebase';
+import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 
 const logoStyle = css({
 	marginTop: '20px',
@@ -29,7 +29,7 @@ class App extends Component {
 		return (
 			<div style={{ textAlign: 'center' }}>
 				<Link to="/">
-					<img {...logoStyle} src={'/logo.png'} />
+					<img {...logoStyle} src={'/logo.png'} alt="Gino Stuart, Flatland BMX rider from Amsterdam, Logo" />
 				</Link>
 				<Navigation pages={pages} />
 				<Route path="/" component={Page} />

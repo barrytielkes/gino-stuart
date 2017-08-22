@@ -1,0 +1,100 @@
+{
+	"parser": "babel-eslint",
+	"extends": ["plugin:prettier-rules/eslint", "plugin:prettier-rules/react", "plugin:flowtype/recommended"],
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true,
+		"jest/globals": true
+	},
+	"globals": {
+		"API_URL": false
+	},
+	"plugins": ["prettier-rules", "jest", "flowtype", "react", "jsx-a11y"],
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"rules": {
+		"arrow-body-style": "off",
+		"react/sort-comp": [
+			2,
+			{
+				"order": ["type-annotations", "static-methods", "lifecycle", "everything-else", "render"]
+			}
+		],
+		"comma-dangle": "off",
+		"no-nested-ternary": "off",
+		"import/imports-first": 0,
+		"import/newline-after-import": 0,
+		"no-duplicate-imports": 0,
+		"import/no-dynamic-require": 0,
+		"import/no-extraneous-dependencies": 0,
+		"import/no-named-as-default": 0,
+		"import/no-unresolved": 0,
+		"import/extensions": 0,
+		"import/prefer-default-export": 0,
+		"indent": 0,
+		"no-tabs": 0,
+		"jsx-a11y/aria-props": 2,
+		"jsx-a11y/heading-has-content": 0,
+		"jsx-a11y/href-no-hash": 2,
+		"jsx-a11y/label-has-for": 2,
+		"jsx-a11y/mouse-events-have-key-events": 2,
+		"jsx-a11y/role-has-required-aria-props": 2,
+		"jsx-a11y/role-supports-aria-props": 2,
+		"max-len": [
+			"error",
+			{
+				"code": 120,
+				"ignoreTemplateLiterals": true,
+				"ignoreComments": true,
+				"tabWidth": 2
+			}
+		],
+		"newline-per-chained-call": 0,
+		"no-console": [
+			1,
+			{
+				"allow": ["warn", "error", "debug"]
+			}
+		],
+		"no-unused-vars": [
+			2,
+			{
+				"argsIgnorePattern": "^_"
+			}
+		],
+		"no-underscore-dangle": "off",
+		"no-use-before-define": 0,
+		"prefer-template": 2,
+		"quotes": [
+			"error",
+			"single",
+			{
+				"allowTemplateLiterals": true,
+				"avoidEscape": true
+			}
+		],
+		"class-methods-use-this": 0,
+		"react/no-unused-prop-types": [
+			"warn",
+			{
+				"customValidators": [],
+				"skipShapeProps": true
+			}
+		],
+		"react/jsx-first-prop-new-line": [2, "multiline"],
+		"react/jsx-filename-extension": 0,
+		"react/jsx-no-target-blank": 0,
+		"react/jsx-indent": 0,
+		"react/jsx-indent-props": [2, "tab"],
+		"react/jsx-wrap-multilines": 0,
+		"react/require-extension": 0,
+		"react/self-closing-comp": 0,
+		"flowtype/object-type-delimiter": [2, "comma"]
+	}
+}
