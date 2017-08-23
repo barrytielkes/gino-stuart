@@ -16,9 +16,7 @@ class Page extends Component {
 						<h1>
 							{data.content.title}
 						</h1>
-						<p>
-							{data.content.body}
-						</p>
+						<p dangerouslySetInnerHTML={{ __html: data.content.body }} />
 					</div>}
 				<Images data={data} />
 			</div>

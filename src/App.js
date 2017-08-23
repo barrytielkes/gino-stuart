@@ -12,6 +12,8 @@ import Navigation from './navigation';
 
 import { firebaseConnect, dataToJS } from 'react-redux-firebase';
 
+const baseStyle = { textAlign: 'center', fontFamily: 'sans-serif', maxWidth: '1000px', margin: '0 auto' };
+
 const logoStyle = css({
 	marginTop: '20px',
 	marginBottom: '10px',
@@ -27,7 +29,7 @@ class App extends Component {
 		const { pages } = this.props;
 		//console.log('>>>>>>>>>>>>>>>> pages', pages);
 		return (
-			<div style={{ textAlign: 'center' }}>
+			<div style={baseStyle}>
 				<Link to="/">
 					<img {...logoStyle} src={'/logo.png'} alt="Gino Stuart, Flatland BMX rider from Amsterdam, Logo" />
 				</Link>
