@@ -19,11 +19,14 @@ export default class Navigation extends React.Component {
 		return (
 			<div {...styles}>
 				{pages &&
-					Object.keys(pages).map(key =>
-						<Link key={key} {...itemStyle} to={key}>
-							{pages[key].button}
-						</Link>,
-					)}
+					Object.keys(pages)
+						.filter(key => pages[key].weight > 0) //remove home button from menu
+						.sort((keyA, keyB) => pages[keyA].weight > pages[keyB].weight) //order by weight
+						.map(key =>
+							<Link key={key} {...itemStyle} to={key}>
+								{pages[key].button}
+							</Link>
+						)}
 			</div>
 		);
 	}
