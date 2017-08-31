@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import reducer from './reducer';
 import App from './App';
 import history from './history';
+import { config } from './firebaseConfig';
 
 const rootReducer = combineReducers({
 	firebase: firebaseStateReducer,
@@ -18,14 +19,6 @@ const rootReducer = combineReducers({
 });
 // const store = createStore(rootReducer);
 
-const config = {
-	apiKey: 'AIzaSyDzNaH1lnZEzY8n-2OCilsIId09T4SwpR0',
-	authDomain: 'gino-stuart.firebaseapp.com',
-	databaseURL: 'https://gino-stuart.firebaseio.com',
-	projectId: 'gino-stuart',
-	storageBucket: 'gino-stuart.appspot.com',
-	messagingSenderId: '978832448706',
-};
 const createStoreWithFirebase = compose(
 	reactReduxFirebase(config, {}) //, { userProfile: 'users' })
 )(createStore);

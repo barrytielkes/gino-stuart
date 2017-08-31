@@ -5,12 +5,12 @@ export default function reducer(state, action) {
 	//	return Object.assign({}, state, { pages: action.data });
 	//} else {
 	// ui changes:
-	switch (action.type) {
+	/*switch (action.type) {
 		case 'SET_PAGE':
 			console.log('SET_PAGE', action.playload);
 
 			break;
-	}
+	}*/
 	//}
 
 	// console.log('reducer B');
