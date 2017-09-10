@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import ReactGA from 'react-ga';
 
 import { combineReducers, compose } from 'redux';
 import { reactReduxFirebase, firebaseStateReducer } from 'react-redux-firebase';
@@ -8,9 +9,10 @@ import { createStore } from 'redux';
 import { Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import App from './App';
+import App, { logPageView } from './App';
 import history from './history';
 import { config } from './firebaseConfig';
+
 /*
 // example:
 config = {
@@ -36,9 +38,12 @@ const initialState = { firebase: {} };
 // Create store with reducers and initial state
 const store = createStoreWithFirebase(rootReducer, initialState);
 
+//  var app = document.getElementById('app');
+//  ReactDOM.render(<Router routes={routes} onUpdate={logPageView} />, app);
+
 ReactDOM.render(
 	<Provider store={store}>
-		<Router history={history}>
+		<Router history={history} onUpdate={logPageView}>
 			<Switch>
 				<Route path="*" component={App} />
 			</Switch>
