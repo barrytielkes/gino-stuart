@@ -2,15 +2,43 @@ import React from 'react';
 // import { compose } from 'redux';
 // import { connect } from 'react-redux';
 import { css } from 'glamor';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const styles = css({ label: 'navigation', color: 'black' });
+const styles = css({
+	label: 'navigation',
+	color: 'black',
+	borderBottom: '1px solid #eee',
+	display: 'inline-block',
+	marginLeft: 'auto',
+	marginRight: 'auto',
+	marginBottom: '15px',
+	'::before': {
+		display: 'block',
+		content: '',
+	},
+});
+
+const itemStyleWrapper = css({
+	display: 'inline-block',
+	' + div': {
+		'::before': {
+			padding: '10px 15px',
+			content: '-',
+			display: 'inline-block',
+			color: '#8E8E8E',
+		},
+	},
+});
 
 const itemStyle = css({
 	label: 'nav-item',
 	cursor: 'pointer',
-	display: 'inline-block',
-	padding: '10px',
+	textDecoration: 'none',
+	textTransform: 'lowercase',
+	color: '#8E8E8E',
+	'.active': {
+		color: 'black',
+	},
 });
 
 export default class Navigation extends React.Component {
@@ -23,12 +51,13 @@ export default class Navigation extends React.Component {
 						.filter(key => pages[key].weight > 0) //remove home button from menu
 						.sort((keyA, keyB) => pages[keyA].weight > pages[keyB].weight) //order by weight
 						.map(key =>
-							<Link key={key} {...itemStyle} to={key}>
-								{pages[key].button}
-							</Link>
+							<div {...itemStyleWrapper}>
+								<NavLink key={key} {...itemStyle} to={`/${key}`} activeClassName="active">
+									{pages[key].button}
+								</NavLink>
+							</div>
 						)}
 			</div>
 		);
 	}
 }
-// activeStyle={{ textDecoration: 'underline' }}
