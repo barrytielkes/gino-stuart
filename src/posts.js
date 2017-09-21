@@ -46,7 +46,7 @@ export default class Posts extends Component {
 		return (
 			<div {...postsStyle}>
 				{data &&
-					Object.keys(data).map(key => {
+					Object.keys(data).reverse().map(key => {
 						const post = data[key];
 						return (
 							<div {...postStyle} key={key}>
@@ -58,9 +58,7 @@ export default class Posts extends Component {
 									<h2 {...titleStyle}>
 										{post.title}
 									</h2>
-									<p {...bodyStyle}>
-										{post.body}
-									</p>
+									<p {...bodyStyle} dangerouslySetInnerHTML={{ __html: post.body }} />
 									{post.date &&
 										<div {...dateStyle}>
 											{post.date}
